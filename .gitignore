@@ -1,0 +1,55 @@
+/extension/src/**
+!/extension/src/**/*.cpp
+!/extension/src/**/*.cu
+!/extension/src/**/*.cuh
+!/extension/src/**/*.hpp
+!/extension/src/**/*.py
+!/extension/src/test
+
+temp.py
+
+# compilation and distribution
+__pycache__
+_ext
+*.pyc
+*.so
+*.a
+*.exe
+maskrcnn_benchmark.egg-info/
+build/
+dist/
+results/
+
+# pytorch/python/numpy formats
+*.pth
+*.pkl
+*.npy
+
+# ipython/jupyter notebooks
+*.ipynb
+**/.ipynb_checkpoints/
+
+# Editor temporaries
+*.swn
+*.swo
+*.swp
+*~
+
+# Pycharm editor settings
+.idea
+.vscode
+.idea
+.DS_Store
+.pytest*
+
+# CMake
+CMakeLists.txt.user
+CMakeCache.txt
+CMakeFiles
+CMakeScripts
+Testing
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
