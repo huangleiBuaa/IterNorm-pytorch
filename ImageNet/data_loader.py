@@ -16,6 +16,8 @@ try:
 except ImportError:
     warnings.warn("Please install DALI from https://www.github.com/NVIDIA/DALI to enable DALI data loader")
     has_DALI = False
+    Pipeline = object
+    DALIClassificationIterator = object
 
 
 def add_arguments(parser: argparse.ArgumentParser):

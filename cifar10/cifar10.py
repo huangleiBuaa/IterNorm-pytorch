@@ -20,7 +20,7 @@ class ClassificationSmall:
         self.cfg = self.add_arguments()
         self.model_name = self.cfg.arch + ext.normailzation.setting(self.cfg) + '_' + self.cfg.dataset
 
-        self.result_path = os.path.join(self.cfg.output, self.model_name)
+        self.result_path = os.path.join(self.cfg.output, self.model_name, self.cfg.log_suffix)
         os.makedirs(self.result_path, exist_ok=True)
         self.logger = ext.logger.setting('log.txt', self.result_path, self.cfg.test, bool(self.cfg.resume))
         ext.trainer.setting(self.cfg)

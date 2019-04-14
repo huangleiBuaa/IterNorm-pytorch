@@ -101,7 +101,7 @@ class IterNorm(torch.nn.Module):
     def __init__(self, num_features, num_groups=1, num_channels=None, T=5, dim=4, eps=1e-5, momentum=0.1, affine=True,
                  *args, **kwargs):
         super(IterNorm, self).__init__()
-        assert dim == 4, 'IterNorm is not support 2D'
+        # assert dim == 4, 'IterNorm is not support 2D'
         self.T = T
         self.eps = eps
         self.momentum = momentum

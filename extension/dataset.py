@@ -7,7 +7,7 @@ from . import utils
 from .logger import get_logger
 from torchvision.datasets.folder import has_file_allowed_extension, default_loader, IMG_EXTENSIONS
 
-dataset_list = ['mnist', 'fashion-mnist', 'cifar10', 'ImageNet', 'fake', 'folder', 'lsun', 'CelebA']
+dataset_list = ['mnist', 'fashion-mnist', 'cifar10', 'ImageNet']
 
 
 def add_arguments(parser: argparse.ArgumentParser):
@@ -123,22 +123,6 @@ def get_dataset_loader(args: argparse.Namespace, transforms=None, target_transfo
         args.dataset_classes = 1000
         root = os.path.join(root, 'train' if train else 'val')
         dataset = torchvision.datasets.ImageFolder(root, transforms, target_transform)
-    elif args.dataset in ['CelebA', 'lsun']:
-        args.dataset_classes = 1
-        root = os.path.join(root, 'train' if train else 'val')
-        dataset = torchvision.datasets.ImageFolder(root, transforms, target_transform)
-    elif args.dataset == 'fake':
-        if len(args.im_size) == 0:
-            args.im_size = (3, 224, 224)
-        if args.dataset_classes is None:
-            args.dataset_classes = 10
-        dataset = torchvision.datasets.FakeData(image_size=args.im_size, num_classes=args.dataset_classes,
-                                                transform=transforms, target_transform=target_transform)
-    elif args.dataset == 'lsun_lmdb':
-        assert len(args.im_size) != 0
-        class_name = ['bedroom_{}'.format('train' if train else 'val')]
-        dataset = torchvision.datasets.LSUN(root, classes=class_name, transform=transforms,
-                                            target_transform=target_transform)
     else:
         raise FileNotFoundError('No such dataset')
 

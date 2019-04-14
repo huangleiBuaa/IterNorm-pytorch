@@ -26,7 +26,7 @@ class ClassificationLarge:
         self.best_prec1 = 0
         self.model_name = self.args.arch + ext.normailzation.setting(self.args) + '_{}'.format(self.args.optimizer)
         if not self.args.resume:
-            self.args.output = os.path.join(self.args.output, self.model_name)
+            self.args.output = os.path.join(self.args.output, self.model_name, self.args.log_suffix)
         self.logger = ext.logger.setting('log.txt', self.args.output, self.args.test, bool(self.args.resume))
         ext.trainer.setting(self.args)
         self.model = models.__dict__[self.args.arch](**self.args.arch_cfg)

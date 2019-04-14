@@ -6,10 +6,10 @@ import extension as my
 __all__ = ['ResNet', 'resnet18', 'resnet34', 'resnet50', 'resnet101', 'resnet152']
 
 model_urls = {'resnet18': 'https://download.pytorch.org/models/resnet18-5c106cde.pth',
-    'resnet34': 'https://download.pytorch.org/models/resnet34-333f7ec4.pth',
-    'resnet50': 'https://download.pytorch.org/models/resnet50-19c8e357.pth',
-    'resnet101': 'https://download.pytorch.org/models/resnet101-5d3b4d8f.pth',
-    'resnet152': 'https://download.pytorch.org/models/resnet152-b121ed2d.pth', }
+              'resnet34': 'https://download.pytorch.org/models/resnet34-333f7ec4.pth',
+              'resnet50': 'https://download.pytorch.org/models/resnet50-19c8e357.pth',
+              'resnet101': 'https://download.pytorch.org/models/resnet101-5d3b4d8f.pth',
+              'resnet152': 'https://download.pytorch.org/models/resnet152-b121ed2d.pth', }
 
 
 def conv3x3(in_planes, out_planes, stride=1):
@@ -89,7 +89,7 @@ class Bottleneck(nn.Module):
 
 class ResNet(nn.Module):
 
-    def __init__(self, block, layers, num_classes=1000):
+    def __init__(self, block, layers, num_classes=1000, **kwargs):
         self.inplanes = 64
         super(ResNet, self).__init__()
         self.conv1 = nn.Conv2d(3, 64, kernel_size=7, stride=2, padding=3, bias=False)
@@ -101,6 +101,10 @@ class ResNet(nn.Module):
         self.layer3 = self._make_layer(block, 256, layers[2], stride=2)
         self.layer4 = self._make_layer(block, 512, layers[3], stride=2)
         self.avgpool = nn.AvgPool2d(7, stride=1)
+        if kwargs.setdefault('last', False):
+            self.last_bn = my.Norm(512 * block.expansion, dim=2)
+        else:
+            self.last_bn = None
         self.fc = nn.Linear(512 * block.expansion, num_classes)
 
         for m in self.modules():
@@ -139,6 +143,8 @@ class ResNet(nn.Module):
 
         x = self.avgpool(x)
         x = x.view(x.size(0), -1)
+        if self.last_bn is not None:
+            x = self.last_bn(x)
         x = self.fc(x)
 
         return x
