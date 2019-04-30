@@ -1,22 +1,60 @@
 # IterNorm-pytorch
-This is the pytorch implementation of the IterNorm
+Pytorch reimplementation of the IterNorm methods, which is described in the following paper:
 
-# Dataset Style
+**Iterative Normalization: Beyond Standardization towards Efficient Whitening** 
+
+Lei Huang, Yi Zhou, Fan Zhu, Li Liu, Ling Shao
+
+*IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 2019 (accepted).*
+[arXiv:1904.03441](https://arxiv.org/abs/1904.03441)
+
+
+This project also provide the pytorch implementation of Decorrelated Batch Normalization (CVPR 2018,[arXiv:1804.08450](https://arxiv.org/abs/1804.08450)), more details please refer to the [torch project](https://github.com/princeton-vl/DecorrelatedBN). 
+
+## Requirements and Dependency
+* Install [PyTorch](http://torch.ch) with CUDA (for GPU). (Experiments are validated on python 3.6.8 and pytorch-nightly 1.0.0)
+* (For visualization), install the dependency [visdom](https://github.com/facebookresearch/visdom) by:
+```Bash
+pip install visdom
+ ```
+
+
+## Experiments
+ 
+ #### 1.  VGG-network on Cifar-10 datasets:
+ 
+run the scripts in the `./cifar10/experiments/vgg`. Note that the dataset root dir should be altered by setting the para '--dataset-root', and the dataset style is described as:
 ```
 -<dataset-root>
-|-cifar10
-|
-|
-`- ImageNet
-  |- train
-  | |- <class 1>
-  | |- ...
-  | `-  <class 1000>
-  `- val
-    |- <class 1>
-    |- ...
-    `-  <class 1000>
-  
+|-cifar10-batches-py
+||-data_batch_1
+||-data_batch_2
+||-data_batch_3
+||-data_batch_4
+||-data_batch_5
+||-test_batch
 ```
+If the dataset is not exist, the script will download it, under the conditioning that the `dataset-root` dir is existed
 
-**To be updated soon...**
+ #### 2.  Wide-Residual-Network on Cifar-10 datasets:
+ 
+run the scripts in the `./cifar10/experiments/wrn`. 
+
+#### 3. ImageNet experiments.
+
+run the scripts in the `./ImageNet/experiment`. Note that resnet18 experimetns are run on one GPU, and resnet-50/101 are run on 4 GPU in the scripts. 
+
+Note that the dataset root dir should be altered by setting the para '--dataset-root'.
+ and the dataset style is described as:
+ -<dataset-root>
+|-train
+||-class1
+||-...
+||-class1000  
+|-var
+||-class1
+||-...
+||-class1000  
+```
+  
+ 
