@@ -9,7 +9,7 @@ Lei Huang, Yi Zhou, Fan Zhu, Li Liu, Ling Shao
 [arXiv:1904.03441](https://arxiv.org/abs/1904.03441)
 
 
-This project also provide the pytorch implementation of Decorrelated Batch Normalization (CVPR 2018,[arXiv:1804.08450](https://arxiv.org/abs/1804.08450)), more details please refer to the [torch project](https://github.com/princeton-vl/DecorrelatedBN). 
+This project also provide the pytorch implementation of Decorrelated Batch Normalization (CVPR 2018, [arXiv:1804.08450](https://arxiv.org/abs/1804.08450)), more details please refer to the [torch project](https://github.com/princeton-vl/DecorrelatedBN). 
 
 ## Requirements and Dependency
 * Install [PyTorch](http://torch.ch) with CUDA (for GPU). (Experiments are validated on python 3.6.8 and pytorch-nightly 1.0.0)
