@@ -153,10 +153,11 @@ class IterNorm(torch.nn.Module):
 
 
 if __name__ == '__main__':
-    ItN = IterNorm(64, num_groups=2, T=10, momentum=1, affine=False)
+    ItN = IterNorm(64, num_groups=8, T=10, momentum=1, affine=False)
     print(ItN)
     ItN.train()
-    x = torch.randn(32, 64, 14, 14)
+    #x = torch.randn(32, 64, 14, 14)
+    x = torch.randn(128, 64)
     x.requires_grad_()
     y = ItN(x)
     z = y.transpose(0, 1).contiguous().view(x.size(1), -1)

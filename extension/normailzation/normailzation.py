@@ -3,6 +3,7 @@ import torch.nn as nn
 from .center_normalization import CenterNorm
 from .group_batch_normalization import GroupBatchNorm
 from .iterative_normalization import IterNorm
+#from .iterative_normalization_FlexGroup import IterNorm
 from .dbn import DBN, DBN2
 from ..utils import str2dict
 

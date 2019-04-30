@@ -14,4 +14,5 @@ python3 cifar10.py \
 --lr-gamma=0.1 \
 --norm=ItN \
 --norm-cfg=T=5,num_channels=64 \
+--dataset-root=/home/lei/PycharmProjects/data/cifar10/ \
 $@

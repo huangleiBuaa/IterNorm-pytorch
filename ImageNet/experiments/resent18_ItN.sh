@@ -13,6 +13,8 @@ python3 imagenet.py \
 --lr-method=step \
 --lr-steps=30 \
 --lr-gamma=0.1 \
+--dataset-root=/data/lei/imageNet/input_torch/ \
+--dataset=folder \
 --norm=ItN \
 --norm-cfg=T=5,num_channels=64 \
 $@

@@ -7,7 +7,7 @@ from . import utils
 from .logger import get_logger
 from torchvision.datasets.folder import has_file_allowed_extension, default_loader, IMG_EXTENSIONS
 
-dataset_list = ['mnist', 'fashion-mnist', 'cifar10', 'ImageNet']
+dataset_list = ['mnist', 'fashion-mnist', 'cifar10', 'ImageNet', 'folder']
 
 
 def add_arguments(parser: argparse.ArgumentParser):
