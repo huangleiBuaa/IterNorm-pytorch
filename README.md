@@ -13,7 +13,7 @@ This project also provide the pytorch implementation of Decorrelated Batch Norma
 
 ## Requirements and Dependency
 * Install [PyTorch](http://torch.ch) with CUDA (for GPU). (Experiments are validated on python 3.6.8 and pytorch-nightly 1.0.0)
-* (For visualization), install the dependency [visdom](https://github.com/facebookresearch/visdom) by:
+* (For visualization if needed), install the dependency [visdom](https://github.com/facebookresearch/visdom) by:
 ```Bash
 pip install visdom
  ```
@@ -46,6 +46,8 @@ run the scripts in the `./ImageNet/experiment`. Note that resnet18 experimetns a
 
 Note that the dataset root dir should be altered by setting the para '--dataset-root'.
  and the dataset style is described as:
+ 
+ ```
  -<dataset-root>
 |-train
 ||-class1
