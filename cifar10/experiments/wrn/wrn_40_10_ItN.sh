@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 cd "$(dirname $0)/../.."
 CUDA_VISIBLE_DEVICES=0 python3 cifar10.py \
--a=WRN_28_10 \
+-a=WRN_40_10 \
 --arch-cfg=dropout=0.3 \
 --batch-size=128 \
 --epochs=200 \

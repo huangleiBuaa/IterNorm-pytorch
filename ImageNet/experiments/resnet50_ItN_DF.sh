@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 cd "$(dirname $0)/.."
-python3 imagenet.py \
--a=resnet18 \
--ac=last_bn=False \
---arch-cfg=dropout=0.3 \
+CUDA_VISIBLE_DEVICES=4,5,6,7 python3 imagenet.py \
+-a=resnet50 \
+--arch-cfg=last=True \
 --batch-size=256 \
 --epochs=100 \
 -oo=sgd \
@@ -17,4 +16,5 @@ python3 imagenet.py \
 --dataset=folder \
 --norm=ItN \
 --norm-cfg=T=5,num_channels=64 \
+--log-suffix=DF \
 $@
