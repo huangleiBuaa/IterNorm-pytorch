@@ -59,4 +59,11 @@ Note that the dataset root dir should be altered by setting the para '--dataset-
 ||-class1000  
 ```
   
- 
+ ## Using IterNorm in other projects/tasks
+  (1) copy `./extension/normalization/iterative_normalization.py` to the respective dir.
+  
+  (2) import the `IterNorm` class in `iterative_normalization.py`
+  
+  (3) generally speaking, replace the `BatchNorm` layer by `IterNorm`, or add it in any place if you want to the feature/channel decorrelated. Considering the efficiency (Note that `BatchNorm` is intergrated in `cudnn` while `IterNorm` is based on the pytorch script without optimization), we recommend 1) replace the first `BatchNorm`; 2) insert extra `IterNorm` before the first skip connection in resnet; 3) inserted before the final linear classfier as described in the paper.
+  
+  (4) Some tips related to the hyperparamters (Group size `G` and Iterative Number `T`). We recommend `G=64` and `T=5` by default. If you run on large batch size (e.g.>1024), you can either increase `G` or `T`. For fine tunning, fix `G=64 or G=32`, and search `T={3,4,5,6,7,8}` may help. 
